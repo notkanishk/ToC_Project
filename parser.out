@@ -1,0 +1,434 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> calc
+Rule 1     calc -> expression
+Rule 2     calc -> empty
+Rule 3     expression -> expression POWER expression
+Rule 4     expression -> expression PLUS expression
+Rule 5     expression -> expression MINUS expression
+Rule 6     expression -> expression MULTIPLY expression
+Rule 7     expression -> expression DIVIDE expression
+Rule 8     expression -> BRACKETOP expression BRACKETCL
+Rule 9     expression -> MINUS expression
+Rule 10    expression -> INT
+Rule 11    expression -> FLOAT
+Rule 12    empty -> <empty>
+
+Terminals, with rules where they appear
+
+BRACKETCL            : 8
+BRACKETOP            : 8
+DIVIDE               : 7
+FLOAT                : 11
+INT                  : 10
+MINUS                : 5 9
+MULTIPLY             : 6
+PLUS                 : 4
+POWER                : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+calc                 : 0
+empty                : 2
+expression           : 1 3 3 4 4 5 5 6 6 7 7 8 9
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . calc
+    (1) calc -> . expression
+    (2) calc -> . empty
+    (3) expression -> . expression POWER expression
+    (4) expression -> . expression PLUS expression
+    (5) expression -> . expression MINUS expression
+    (6) expression -> . expression MULTIPLY expression
+    (7) expression -> . expression DIVIDE expression
+    (8) expression -> . BRACKETOP expression BRACKETCL
+    (9) expression -> . MINUS expression
+    (10) expression -> . INT
+    (11) expression -> . FLOAT
+    (12) empty -> .
+
+    BRACKETOP       shift and go to state 5
+    MINUS           shift and go to state 4
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+    $end            reduce using rule 12 (empty -> .)
+
+    calc                           shift and go to state 1
+    expression                     shift and go to state 2
+    empty                          shift and go to state 3
+
+state 1
+
+    (0) S' -> calc .
+
+
+
+state 2
+
+    (1) calc -> expression .
+    (3) expression -> expression . POWER expression
+    (4) expression -> expression . PLUS expression
+    (5) expression -> expression . MINUS expression
+    (6) expression -> expression . MULTIPLY expression
+    (7) expression -> expression . DIVIDE expression
+
+    $end            reduce using rule 1 (calc -> expression .)
+    POWER           shift and go to state 8
+    PLUS            shift and go to state 9
+    MINUS           shift and go to state 10
+    MULTIPLY        shift and go to state 11
+    DIVIDE          shift and go to state 12
+
+
+state 3
+
+    (2) calc -> empty .
+
+    $end            reduce using rule 2 (calc -> empty .)
+
+
+state 4
+
+    (9) expression -> MINUS . expression
+    (3) expression -> . expression POWER expression
+    (4) expression -> . expression PLUS expression
+    (5) expression -> . expression MINUS expression
+    (6) expression -> . expression MULTIPLY expression
+    (7) expression -> . expression DIVIDE expression
+    (8) expression -> . BRACKETOP expression BRACKETCL
+    (9) expression -> . MINUS expression
+    (10) expression -> . INT
+    (11) expression -> . FLOAT
+
+    BRACKETOP       shift and go to state 5
+    MINUS           shift and go to state 4
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    expression                     shift and go to state 13
+
+state 5
+
+    (8) expression -> BRACKETOP . expression BRACKETCL
+    (3) expression -> . expression POWER expression
+    (4) expression -> . expression PLUS expression
+    (5) expression -> . expression MINUS expression
+    (6) expression -> . expression MULTIPLY expression
+    (7) expression -> . expression DIVIDE expression
+    (8) expression -> . BRACKETOP expression BRACKETCL
+    (9) expression -> . MINUS expression
+    (10) expression -> . INT
+    (11) expression -> . FLOAT
+
+    BRACKETOP       shift and go to state 5
+    MINUS           shift and go to state 4
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    expression                     shift and go to state 14
+
+state 6
+
+    (10) expression -> INT .
+
+    POWER           reduce using rule 10 (expression -> INT .)
+    PLUS            reduce using rule 10 (expression -> INT .)
+    MINUS           reduce using rule 10 (expression -> INT .)
+    MULTIPLY        reduce using rule 10 (expression -> INT .)
+    DIVIDE          reduce using rule 10 (expression -> INT .)
+    $end            reduce using rule 10 (expression -> INT .)
+    BRACKETCL       reduce using rule 10 (expression -> INT .)
+
+
+state 7
+
+    (11) expression -> FLOAT .
+
+    POWER           reduce using rule 11 (expression -> FLOAT .)
+    PLUS            reduce using rule 11 (expression -> FLOAT .)
+    MINUS           reduce using rule 11 (expression -> FLOAT .)
+    MULTIPLY        reduce using rule 11 (expression -> FLOAT .)
+    DIVIDE          reduce using rule 11 (expression -> FLOAT .)
+    $end            reduce using rule 11 (expression -> FLOAT .)
+    BRACKETCL       reduce using rule 11 (expression -> FLOAT .)
+
+
+state 8
+
+    (3) expression -> expression POWER . expression
+    (3) expression -> . expression POWER expression
+    (4) expression -> . expression PLUS expression
+    (5) expression -> . expression MINUS expression
+    (6) expression -> . expression MULTIPLY expression
+    (7) expression -> . expression DIVIDE expression
+    (8) expression -> . BRACKETOP expression BRACKETCL
+    (9) expression -> . MINUS expression
+    (10) expression -> . INT
+    (11) expression -> . FLOAT
+
+    BRACKETOP       shift and go to state 5
+    MINUS           shift and go to state 4
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    expression                     shift and go to state 15
+
+state 9
+
+    (4) expression -> expression PLUS . expression
+    (3) expression -> . expression POWER expression
+    (4) expression -> . expression PLUS expression
+    (5) expression -> . expression MINUS expression
+    (6) expression -> . expression MULTIPLY expression
+    (7) expression -> . expression DIVIDE expression
+    (8) expression -> . BRACKETOP expression BRACKETCL
+    (9) expression -> . MINUS expression
+    (10) expression -> . INT
+    (11) expression -> . FLOAT
+
+    BRACKETOP       shift and go to state 5
+    MINUS           shift and go to state 4
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    expression                     shift and go to state 16
+
+state 10
+
+    (5) expression -> expression MINUS . expression
+    (3) expression -> . expression POWER expression
+    (4) expression -> . expression PLUS expression
+    (5) expression -> . expression MINUS expression
+    (6) expression -> . expression MULTIPLY expression
+    (7) expression -> . expression DIVIDE expression
+    (8) expression -> . BRACKETOP expression BRACKETCL
+    (9) expression -> . MINUS expression
+    (10) expression -> . INT
+    (11) expression -> . FLOAT
+
+    BRACKETOP       shift and go to state 5
+    MINUS           shift and go to state 4
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    expression                     shift and go to state 17
+
+state 11
+
+    (6) expression -> expression MULTIPLY . expression
+    (3) expression -> . expression POWER expression
+    (4) expression -> . expression PLUS expression
+    (5) expression -> . expression MINUS expression
+    (6) expression -> . expression MULTIPLY expression
+    (7) expression -> . expression DIVIDE expression
+    (8) expression -> . BRACKETOP expression BRACKETCL
+    (9) expression -> . MINUS expression
+    (10) expression -> . INT
+    (11) expression -> . FLOAT
+
+    BRACKETOP       shift and go to state 5
+    MINUS           shift and go to state 4
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    expression                     shift and go to state 18
+
+state 12
+
+    (7) expression -> expression DIVIDE . expression
+    (3) expression -> . expression POWER expression
+    (4) expression -> . expression PLUS expression
+    (5) expression -> . expression MINUS expression
+    (6) expression -> . expression MULTIPLY expression
+    (7) expression -> . expression DIVIDE expression
+    (8) expression -> . BRACKETOP expression BRACKETCL
+    (9) expression -> . MINUS expression
+    (10) expression -> . INT
+    (11) expression -> . FLOAT
+
+    BRACKETOP       shift and go to state 5
+    MINUS           shift and go to state 4
+    INT             shift and go to state 6
+    FLOAT           shift and go to state 7
+
+    expression                     shift and go to state 19
+
+state 13
+
+    (9) expression -> MINUS expression .
+    (3) expression -> expression . POWER expression
+    (4) expression -> expression . PLUS expression
+    (5) expression -> expression . MINUS expression
+    (6) expression -> expression . MULTIPLY expression
+    (7) expression -> expression . DIVIDE expression
+
+    POWER           reduce using rule 9 (expression -> MINUS expression .)
+    PLUS            reduce using rule 9 (expression -> MINUS expression .)
+    MINUS           reduce using rule 9 (expression -> MINUS expression .)
+    MULTIPLY        reduce using rule 9 (expression -> MINUS expression .)
+    DIVIDE          reduce using rule 9 (expression -> MINUS expression .)
+    $end            reduce using rule 9 (expression -> MINUS expression .)
+    BRACKETCL       reduce using rule 9 (expression -> MINUS expression .)
+
+  ! POWER           [ shift and go to state 8 ]
+  ! PLUS            [ shift and go to state 9 ]
+  ! MINUS           [ shift and go to state 10 ]
+  ! MULTIPLY        [ shift and go to state 11 ]
+  ! DIVIDE          [ shift and go to state 12 ]
+
+
+state 14
+
+    (8) expression -> BRACKETOP expression . BRACKETCL
+    (3) expression -> expression . POWER expression
+    (4) expression -> expression . PLUS expression
+    (5) expression -> expression . MINUS expression
+    (6) expression -> expression . MULTIPLY expression
+    (7) expression -> expression . DIVIDE expression
+
+    BRACKETCL       shift and go to state 20
+    POWER           shift and go to state 8
+    PLUS            shift and go to state 9
+    MINUS           shift and go to state 10
+    MULTIPLY        shift and go to state 11
+    DIVIDE          shift and go to state 12
+
+
+state 15
+
+    (3) expression -> expression POWER expression .
+    (3) expression -> expression . POWER expression
+    (4) expression -> expression . PLUS expression
+    (5) expression -> expression . MINUS expression
+    (6) expression -> expression . MULTIPLY expression
+    (7) expression -> expression . DIVIDE expression
+
+    POWER           reduce using rule 3 (expression -> expression POWER expression .)
+    PLUS            reduce using rule 3 (expression -> expression POWER expression .)
+    MINUS           reduce using rule 3 (expression -> expression POWER expression .)
+    MULTIPLY        reduce using rule 3 (expression -> expression POWER expression .)
+    DIVIDE          reduce using rule 3 (expression -> expression POWER expression .)
+    $end            reduce using rule 3 (expression -> expression POWER expression .)
+    BRACKETCL       reduce using rule 3 (expression -> expression POWER expression .)
+
+  ! POWER           [ shift and go to state 8 ]
+  ! PLUS            [ shift and go to state 9 ]
+  ! MINUS           [ shift and go to state 10 ]
+  ! MULTIPLY        [ shift and go to state 11 ]
+  ! DIVIDE          [ shift and go to state 12 ]
+
+
+state 16
+
+    (4) expression -> expression PLUS expression .
+    (3) expression -> expression . POWER expression
+    (4) expression -> expression . PLUS expression
+    (5) expression -> expression . MINUS expression
+    (6) expression -> expression . MULTIPLY expression
+    (7) expression -> expression . DIVIDE expression
+
+    PLUS            reduce using rule 4 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 4 (expression -> expression PLUS expression .)
+    $end            reduce using rule 4 (expression -> expression PLUS expression .)
+    BRACKETCL       reduce using rule 4 (expression -> expression PLUS expression .)
+    POWER           shift and go to state 8
+    MULTIPLY        shift and go to state 11
+    DIVIDE          shift and go to state 12
+
+  ! POWER           [ reduce using rule 4 (expression -> expression PLUS expression .) ]
+  ! MULTIPLY        [ reduce using rule 4 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 4 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 9 ]
+  ! MINUS           [ shift and go to state 10 ]
+
+
+state 17
+
+    (5) expression -> expression MINUS expression .
+    (3) expression -> expression . POWER expression
+    (4) expression -> expression . PLUS expression
+    (5) expression -> expression . MINUS expression
+    (6) expression -> expression . MULTIPLY expression
+    (7) expression -> expression . DIVIDE expression
+
+    PLUS            reduce using rule 5 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 5 (expression -> expression MINUS expression .)
+    $end            reduce using rule 5 (expression -> expression MINUS expression .)
+    BRACKETCL       reduce using rule 5 (expression -> expression MINUS expression .)
+    POWER           shift and go to state 8
+    MULTIPLY        shift and go to state 11
+    DIVIDE          shift and go to state 12
+
+  ! POWER           [ reduce using rule 5 (expression -> expression MINUS expression .) ]
+  ! MULTIPLY        [ reduce using rule 5 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 5 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 9 ]
+  ! MINUS           [ shift and go to state 10 ]
+
+
+state 18
+
+    (6) expression -> expression MULTIPLY expression .
+    (3) expression -> expression . POWER expression
+    (4) expression -> expression . PLUS expression
+    (5) expression -> expression . MINUS expression
+    (6) expression -> expression . MULTIPLY expression
+    (7) expression -> expression . DIVIDE expression
+
+    PLUS            reduce using rule 6 (expression -> expression MULTIPLY expression .)
+    MINUS           reduce using rule 6 (expression -> expression MULTIPLY expression .)
+    MULTIPLY        reduce using rule 6 (expression -> expression MULTIPLY expression .)
+    DIVIDE          reduce using rule 6 (expression -> expression MULTIPLY expression .)
+    $end            reduce using rule 6 (expression -> expression MULTIPLY expression .)
+    BRACKETCL       reduce using rule 6 (expression -> expression MULTIPLY expression .)
+    POWER           shift and go to state 8
+
+  ! POWER           [ reduce using rule 6 (expression -> expression MULTIPLY expression .) ]
+  ! PLUS            [ shift and go to state 9 ]
+  ! MINUS           [ shift and go to state 10 ]
+  ! MULTIPLY        [ shift and go to state 11 ]
+  ! DIVIDE          [ shift and go to state 12 ]
+
+
+state 19
+
+    (7) expression -> expression DIVIDE expression .
+    (3) expression -> expression . POWER expression
+    (4) expression -> expression . PLUS expression
+    (5) expression -> expression . MINUS expression
+    (6) expression -> expression . MULTIPLY expression
+    (7) expression -> expression . DIVIDE expression
+
+    PLUS            reduce using rule 7 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 7 (expression -> expression DIVIDE expression .)
+    MULTIPLY        reduce using rule 7 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 7 (expression -> expression DIVIDE expression .)
+    $end            reduce using rule 7 (expression -> expression DIVIDE expression .)
+    BRACKETCL       reduce using rule 7 (expression -> expression DIVIDE expression .)
+    POWER           shift and go to state 8
+
+  ! POWER           [ reduce using rule 7 (expression -> expression DIVIDE expression .) ]
+  ! PLUS            [ shift and go to state 9 ]
+  ! MINUS           [ shift and go to state 10 ]
+  ! MULTIPLY        [ shift and go to state 11 ]
+  ! DIVIDE          [ shift and go to state 12 ]
+
+
+state 20
+
+    (8) expression -> BRACKETOP expression BRACKETCL .
+
+    POWER           reduce using rule 8 (expression -> BRACKETOP expression BRACKETCL .)
+    PLUS            reduce using rule 8 (expression -> BRACKETOP expression BRACKETCL .)
+    MINUS           reduce using rule 8 (expression -> BRACKETOP expression BRACKETCL .)
+    MULTIPLY        reduce using rule 8 (expression -> BRACKETOP expression BRACKETCL .)
+    DIVIDE          reduce using rule 8 (expression -> BRACKETOP expression BRACKETCL .)
+    $end            reduce using rule 8 (expression -> BRACKETOP expression BRACKETCL .)
+    BRACKETCL       reduce using rule 8 (expression -> BRACKETOP expression BRACKETCL .)
+

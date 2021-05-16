@@ -43,7 +43,7 @@ def t_error(t):
 lexer = lex.lex()
 
 
-# driver for lexer output demo
+#~~ driver for lexer output demo ~~#
 # lexer.input('2+3')
 # while True:
 #     tok = lexer.token()
@@ -65,7 +65,9 @@ def p_calculate(p):
     calc : expression
          | empty
     '''
-
+    global err
+    if err == 1:
+        p[1] = None
     print("Flat parse tree: " + str(p[1]).strip('[]'))
     print("Result: " + str(calculator(p[1])))
 
@@ -107,6 +109,8 @@ def p_error(p):
         print(f"Error before {p.value}")
     else:
         print("Illegal or incomplete expression")
+    global err
+    err = 1
 
 # empty expression
 def p_empty(p):
@@ -130,5 +134,6 @@ def calculator(p):
     else:
         return p
 
+err = 0
 exp = input("enter expression: ")
 parser.parse(exp)

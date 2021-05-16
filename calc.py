@@ -66,7 +66,8 @@ def p_calculate(p):
          | empty
     '''
 
-    print(calculator(p[1]))
+    print("Flat parse tree: " + str(p[1]).strip('[]'))
+    print("Result: " + str(calculator(p[1])))
 
 def p_exp(p):
     '''
@@ -116,9 +117,18 @@ parser = yacc.yacc()
 
 def calculator(p):
     if type(p) is tuple:        # check if parse tree created
-        return p
+        if p[0] == '^':
+            return calculator(p[1]) ** calculator(p[2])
+        if p[0] == '+':
+            return calculator(p[1]) + calculator(p[2])
+        if p[0] == '-':
+            return calculator(p[1]) - calculator(p[2])
+        if p[0] == '*':
+            return calculator(p[1]) * calculator(p[2])
+        if p[0] == '/':
+            return calculator(p[1]) / calculator(p[2])
     else:
-        return 
+        return p
 
 exp = input("enter expression: ")
 parser.parse(exp)

@@ -194,6 +194,14 @@ def errDisp():
     btClr["padx"] = "140"
     btEqual["padx"] = "150"
 
+# delete one character
+def delOne():
+    if err == 0:
+        currExp = entry.get()
+        entry.delete(0, END)
+        currExp = currExp[:-1]
+        entry.insert(0, currExp)
+
 # resets all visual elements
 def clear():
     btClr["text"] = "Clear"
@@ -234,13 +242,14 @@ bt8 = Button(root, text="8", padx=40, pady=20, command= lambda: expIn(8))
 bt9 = Button(root, text="9", padx=40, pady=20, command= lambda: expIn(9))
 # define symbol buttons
 btDot = Button(root, text=".", padx=42, pady=20, command= lambda: expIn('.'))
-btPlus = Button(root, text="+", padx=36.5, pady=51, command= lambda: expIn('+'), bg="#F1EABC")
+btPlus = Button(root, text="+", padx=36.5, pady=20, command= lambda: expIn('+'), bg="#F1EABC")
 btMinus = Button(root, text="-", padx=40, pady=20, command= lambda: expIn('-'), bg="#F1EABC")
 btBrOp = Button(root, text="(", padx=41.5, pady=20, command= lambda: expIn('('), bg="#F1EABC")
 btBrCl = Button(root, text=")", padx=41.5, pady=20, command= lambda: expIn(')'), bg="#F1EABC")
 btPower = Button(root, text="^", padx=38.5, pady=20, command= lambda: expIn('^'), bg="#F1EABC")
 btMult = Button(root, text="x", padx=40, pady=20, command= lambda: expIn('*'), bg="#F1EABC")
 btDivide = Button(root, text="/", padx=42, pady=20, command= lambda: expIn('/'), bg="#F1EABC")
+btDel = Button(root, text="Del", padx=42, pady=20, command= delOne, bg="#F1EABC")
 btEqual = Button(root, text="=", padx=182, pady=20, command= eval, borderwidth=3, bg="#ECA527")
 btClr = Button(root, text="Clear", padx=170, pady=20, command= clear, borderwidth=4)
 
@@ -262,7 +271,8 @@ bt7.grid(row=6, column=0, sticky=E+W)
 bt8.grid(row=6, column=1, sticky=E+W)
 bt9.grid(row=6, column=2, sticky=E+W)
 btDot.grid(row=9, column=2, sticky=E+W)
-btPlus.grid(row=8, column=3, rowspan=2, sticky=E+W+N+S)
+btPlus.grid(row=8, column=3, sticky=E+W+N+S)
+btDel.grid(row=9, column=3, sticky=E+W)
 btMinus.grid(row=7, column=3, sticky=E+W)
 btBrOp.grid(row=5, column=0, sticky=E+W)
 btBrCl.grid(row=5, column=1, sticky=E+W)
